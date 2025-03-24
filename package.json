@@ -8,7 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "prisma generate",
-    "vercel-build": "nuxt build && prisma generate && prisma migrate deploy && prisma init"
+    "vercel-build": "nuxt build"
   },
   "dependencies": {
     "@nuxtjs/color-mode": "^3.5.2",
