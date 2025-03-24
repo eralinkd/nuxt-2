@@ -22,6 +22,7 @@ model User {
     answers          Answer[]
     stripeCustomerId String?
     Subscription     Subscription[]
+    uuid             String?        @unique
 }
 
 model Session {

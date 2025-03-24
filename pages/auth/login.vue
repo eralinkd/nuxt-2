@@ -13,11 +13,15 @@
 </template>
 
 <script setup>
+import { loginWithEmail } from "@/composables/useAuth";
 const email = ref("");
 const password = ref("");
 
-const login = () => {
-  // login
+const login = async () => {
+  const response = await loginWithEmail(email.value, password.value);
+  if (response.accessToken) {
+    window.location.reload();
+  }
 };
 
 definePageMeta({

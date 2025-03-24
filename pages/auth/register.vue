@@ -6,7 +6,7 @@
     <UInput v-model="password" placeholder="Password" />
     <div class="btns">
       <UBaseButton secondary @click="navigateTo('/auth/login')">
-        Login 
+        Login
       </UBaseButton>
       <UBaseButton @click="register">Register</UBaseButton>
     </div>
@@ -14,12 +14,20 @@
 </template>
 
 <script setup>
+import { registerWithEmail } from "@/composables/useAuth";
 const username = ref("");
 const email = ref("");
 const password = ref("");
 
-const register = () => {
-  // register
+const register = async () => {
+  const response = await registerWithEmail(
+    username.value,
+    email.value,
+    password.value
+  );
+  if (response.accessToken) {
+    window.location.reload();
+  }
 };
 
 definePageMeta({

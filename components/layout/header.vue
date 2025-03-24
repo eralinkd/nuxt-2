@@ -1,11 +1,14 @@
 <template>
   <header class="layout-header">
     <p>Header</p>
+    <IconsLogout v-if="isAuthenticated" class="logout-icon" @click="logout" />
   </header>
 </template>
 
-<script setup></script>
-
+<script setup>
+const { isAuthenticated } = useUser();
+const { logout } = useLogout();
+</script>
 
 <style scoped lang="scss">
 @use "~/assets/css/variables" as *;
@@ -20,5 +23,10 @@
   font-weight: 600;
   text-transform: uppercase;
   font-size: 1.1rem;
+}
+.logout-icon {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
 }
 </style>
