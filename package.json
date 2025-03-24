@@ -7,7 +7,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "vercel-build": "npx prisma db push --force-reset && prisma migrate deploy && nuxt build",
+    "vercel-build": "npx prisma db push --force-reset && prisma migrate deploy --force-reset && nuxt build",
     "postinstall": "nuxt prepare && prisma generate"
   },
   "dependencies": {
