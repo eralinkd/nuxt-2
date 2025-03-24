@@ -7,8 +7,9 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "vercel-build": "prisma generate && prisma migrate deploy && NODE_ENV=production nuxt build",
     "postinstall": "prisma generate",
-    "vercel-build": "nuxt build"
+    "start": "prisma generate && prisma migrate deploy && NODE_ENV=production nuxt build && node .output/server/index.mjs"
   },
   "dependencies": {
     "@heroicons/vue": "^2.2.0",
@@ -38,5 +39,8 @@
   },
   "prisma": {
     "schema": "./server/database/schema.prisma"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
