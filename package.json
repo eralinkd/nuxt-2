@@ -7,8 +7,11 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "vercel-build": "prisma generate && prisma migrate deploy && NODE_ENV=production nuxt build",
     "postinstall": "prisma generate",
-    "start": "prisma generate && prisma migrate deploy && NODE_ENV=production nuxt build && node .output/server/index.mjs"
+    "start": "prisma generate && prisma migrate deploy && NODE_ENV=production nuxt build && node .output/server/index.mjs",
+    "db:migrate:create": "prisma migrate dev --create-only",
+    "db:migrate:deploy": "prisma migrate deploy"
   },
   "dependencies": {
     "@heroicons/vue": "^2.2.0",
