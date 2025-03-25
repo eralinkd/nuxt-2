@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/css/main.scss"],
   ssr: false,
-  modules: [],
+  modules: ['@nuxthub/core'],
   runtimeConfig: {
     session: {
       name: 'auth_token',
