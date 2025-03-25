@@ -2,18 +2,13 @@ import prisma from "../database/client";
 
 export default defineEventHandler(async (event) => {
   try {
-    // Проверяем подключение
+    // Проверяем подключение через простой запрос
     await prisma.$queryRaw`SELECT 1`;
+    console.log('Подключение к базе данных успешно установлено');
     
     // Проверяем таблицу пользователей
     const userCount = await prisma.user.count();
-    
-    // Получаем информацию о таблицах
-    const tables = await prisma.$queryRaw`
-      SELECT table_name 
-      FROM information_schema.tables 
-      WHERE table_schema = 'public'
-    `;
+    console.log('Количество пользователей в таблице:', userCount);
     
     // Проверяем наличие переменных окружения
     const envCheck = {
@@ -21,6 +16,7 @@ export default defineEventHandler(async (event) => {
       databaseUrlType: process.env.DATABASE_URL ? process.env.DATABASE_URL.split('://')[0] : null,
       nodeEnv: process.env.NODE_ENV
     };
+    console.log('Информация о переменных окружения:', envCheck);
     
     return {
       status: 'success',
@@ -28,7 +24,6 @@ export default defineEventHandler(async (event) => {
       timestamp: new Date().toISOString(),
       details: {
         userCount,
-        tables: tables.map(t => t.table_name),
         env: envCheck
       }
     };

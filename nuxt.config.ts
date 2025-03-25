@@ -1,18 +1,21 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  css: ["~/assets/css/main.scss"],
+  modules: [],
+  css: ['~/assets/css/main.scss'],
+
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+
   ssr: false,
-  modules: ["nuxt-auth-utils"],
+
   runtimeConfig: {
-    session: {
-      name: 'auth_token',
-      password: process.env.NUXT_SESSION_PASSWORD || '',
-      maxAge: 30 * 24 * 60 * 60,
-      cookie: {
-        sameSite: 'lax'
-      }
-    }
-  }
+    jwtSecret: process.env.JWT_SECRET || 'your-secret-key'
+  },
+
+  compatibilityDate: '2025-03-25'
 })
