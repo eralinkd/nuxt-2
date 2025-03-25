@@ -5,14 +5,4 @@ export default defineNuxtConfig({
   css: ["~/assets/css/main.scss"],
   ssr: false,
   modules: ['@nuxthub/core'],
-  runtimeConfig: {
-    session: {
-      name: 'auth_token',
-      password: process.env.NUXT_SESSION_PASSWORD || '',
-      maxAge: 30 * 24 * 60 * 60,
-      cookie: {
-        sameSite: 'lax'
-      }
-    }
-  }
 })
