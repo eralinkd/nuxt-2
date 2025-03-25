@@ -6,15 +6,9 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "vercel-build": "prisma generate && prisma migrate deploy && NODE_ENV=production nuxt build",
-    "postinstall": "prisma generate",
-    "start": "prisma generate && prisma migrate deploy && NODE_ENV=production nuxt build && node .output/server/index.mjs",
-    "db:migrate:create": "prisma migrate dev --create-only",
-    "db:migrate:deploy": "prisma migrate deploy"
+    "preview": "nuxt preview"
   },
   "dependencies": {
-    "@heroicons/vue": "^2.2.0",
     "@nuxthub/core": "^0.8.18",
     "@nuxtjs/color-mode": "^3.5.2",
     "@prisma/client": "^6.5.0",
@@ -37,13 +31,9 @@
     "postcss": "^8.5.3",
     "prisma": "^6.5.0",
     "sass": "^1.86.0",
-    "sass-loader": "^16.0.5",
-    "tailwindcss": "^3.4.17"
+    "sass-loader": "^16.0.5"
   },
   "prisma": {
     "schema": "./server/database/schema.prisma"
-  },
-  "engines": {
-    "node": ">=18.0.0"
   }
 }
