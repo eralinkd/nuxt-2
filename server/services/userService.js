@@ -1,4 +1,4 @@
-import { hash, compare } from "bcrypt";
+import bcrypt from "bcryptjs";
 import { v4 as uuidv4 } from "uuid";
 import {
   writeUser,
@@ -6,7 +6,7 @@ import {
 } from "~/server/database/repositories/userRepository";
 
 export const createUser = async (username, email, password) => {
-  const hashedPassword = await hash(password, 10);
+  const hashedPassword = await bcrypt.hash(password, 10);
   const data = {
     username,
     email,
@@ -23,7 +23,7 @@ export const verifyCredentials = async (email, password) => {
     throw new Error("Invalid credentials");
   }
 
-  const isPasswordValid = await compare(password, user.password);
+  const isPasswordValid = await bcrypt.compare(password, user.password);
 
   if (!isPasswordValid) {
     throw new Error("Invalid credentials");
