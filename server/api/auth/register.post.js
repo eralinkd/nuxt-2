@@ -10,7 +10,6 @@ export default defineEventHandler(async (event) => {
       refreshToken: tokens.refreshToken,
     };
   } catch (error) {
-    console.error(error);
     throw createError({
       statusCode: 400,
       message: error.message,
