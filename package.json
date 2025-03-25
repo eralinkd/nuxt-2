@@ -6,7 +6,10 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "vercel-build": "prisma generate && prisma migrate deploy && NODE_ENV=production nuxt build",
+    "postinstall": "prisma generate",
+    "start": "prisma generate && prisma migrate deploy && NODE_ENV=production nuxt build && node .output/server/index.mjs"
   },
   "dependencies": {
     "@heroicons/vue": "^2.2.0",
